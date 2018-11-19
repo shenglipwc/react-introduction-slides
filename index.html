@@ -33,7 +33,7 @@
 				<h2>React</h2>
 			</section>
 			<section>
-				<section>
+				<section id="what-is-react">
 					<h2>What is React?</h2>
 					<p class="fragment">A JavaScript library for building user interfaces</p>
 				</section>
@@ -75,6 +75,12 @@
 		// - https://github.com/hakimel/reveal.js#configuration
 		// - https://github.com/hakimel/reveal.js#dependencies
 		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
 			dependencies: [
 				{ src: 'plugin/markdown/marked.js' },
 				{ src: 'plugin/markdown/markdown.js' },
