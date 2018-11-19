@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>React Introduction</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<img style="margin:0px; background: transparent; border:none;box-shadow: none;width:250px;height: 250px;" src="React-icon.svg"
+				 alt="" />
+				<br>
+				<h2>React</h2>
+			</section>
+			<section>
+				<section>
+					<h2>What is React?</h2>
+					<p class="fragment">A JavaScript library for building user interfaces</p>
+				</section>
+				<section>
+					<p>The most useful part:</p>
+					<p class="fragment">A library for mapping the state to UI</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Why do we need React?</h2>
+				</section>
+				<section>
+					<h3>Javascript DOM api:</h3>
+					<ul>
+						<li class="fragment">Low Level</li>
+						<li class="fragment">Procedural</li>
+						<li class="fragment">No Built-in Modulization</li>
+					</ul>
+				</section>
+				<section>
+					<h3>React</h3>
+					<ul>
+						<li class="fragment">High Level</li>
+						<li class="fragment">Declarative</li>
+						<li class="fragment">Component</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/external/external.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
