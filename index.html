@@ -9,6 +9,7 @@
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/black.css" id="theme">
+	<link rel="stylesheet" href="css/custom/custom.css">
 
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -34,6 +35,123 @@
 			</section>
 			<section data-external="what.html"></section>
 			<section data-external="why.html"></section>
+			<section>
+				<h3>Start from Component</h3>
+				<ul class="fragment">
+					<li>Function</li>
+					<li style="white-space: nowrap;">Class - extends React.Component</li>
+				</ul>
+			</section>
+			<section>
+				<p data-height="500px" data-theme-id="0" data-slug-hash="Oazqvx" data-default-tab="js,result" data-user="abucraft"
+				 data-pen-title="React Component" class="codepen">See the Pen <a href="https://codepen.io/abucraft/pen/Oazqvx/">React
+						Component</a> by 李晟 (<a href="https://codepen.io/abucraft">@abucraft</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+				<script src="https://static.codepen.io/assets/embed/ei.js"></script>
+			</section>
+			<section>
+				<h3>Class Component</h3>
+				<pre><code class="javascript">class Welcome extends React.Component {
+	state = {}
+	render() {
+		return &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;;
+	}
+}</code></pre>
+				<ul>
+					<li>render - return ReactNode</li>
+					<li>props - passed from outside</li>
+					<li>state - private internal state</li>
+				</ul>
+			</section>
+			<section>
+				<section>
+					<h3>How does react render component?</h3>
+				</section>
+				<section>
+					<h3>What is JSX?</h3>
+					<div class="fragment">
+						<p style="text-align:left">Syntax suger for</p>
+						<pre style="display:inline"><code class="javascript">React.createElement(component, props, ...children)</code></pre>
+						<p class="fragment" style="text-align: left">children &#8594; props.children</p>
+					</div>
+				</section>
+				<section>
+					<div>
+						<pre><code class="html">&lt;MyButton color="blue" shadowSize={2}&gt;
+	Click Me
+&lt;/MyButton&gt;</code></pre>
+						<div class="fragment">
+							<img style="height:80px;width:80px" class="icon" src="lib/arrow.svg"></img>
+							<pre><code class="javascript">React.createElement(
+	MyButton,
+	{color: 'blue', shadowSize: 2},
+	'Click Me'
+)</code></pre>
+						</div>
+					</div>
+				</section>
+				<section data-external="react-tree.html"></section>
+			</section>
+			<section>
+				<section>
+					<h3>How to update component?</h3>
+				</section>
+				<section>
+					<p>React.Component:setState({json})</p>
+					<p class="fragment">It will update the state by the key value pairs in json and trigger rerender</p>
+				</section>
+				<section>
+					<p>Event callback</p>
+					<pre class="fragment"><code class="javascript">&lt;button onClick={activateLasers}&gt;
+	Activate Lasers
+&lt;/button&gt;</code></pre>
+				</section>
+				<section data-external="react-tree.html"></section>
+			</section>
+			<section>
+				<section>
+					<h3>Component Lifecycle</h3>
+				</section>
+				<section>
+					<img src="react-component-lifecycle.png" />
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Conditional Rendering?</h3>
+					<h3>Repeat Rendering?</h3>
+				</section>
+				<section>
+					<h3>Use the power of javascript!</h3>
+				</section>
+				<section>
+					<pre><code class="javascript">&lt;div&gt;
+	{isLoggedIn? (&lt;LogoutButton /&gt;) : (&lt;LoginButton /&gt;)}
+&lt;/div&gt;</code></pre>
+				</section>
+				<section>
+					<pre><code class="javascript">numbers.map((number) =&gt;
+// Key should be specified inside the array.
+&lt;ListItem key={number.toString()}
+		value={number} /&gt;)</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Manage the state of your App</h3>
+				</section>
+				<section>
+					<h3>React <a href="https://reactjs.org/docs/context.html" target="_blank">Context</a> API</h3>
+				</section>
+				<section>
+					<a style="color:#744cbc" href="https://redux.js.org/" target="_blank">
+						<div>
+							<img class="icon" style="width:200px" src="https://blobscdn.gitbook.com/v0/b/gitbook-28427.appspot.com/o/spaces%2F-L5K1I1WsuQMZ8ecEuWg%2Favatar.png?generation=1518623866348435&amp;alt=media">
+						</div>
+						<h2><span>Redux</span></h2>
+					</a>
+				</section>
+			</section>
+			<section><h3>Thanks!</h3></section>
 		</div>
 	</div>
 
@@ -56,7 +174,7 @@
 				{ src: 'plugin/markdown/markdown.js' },
 				{ src: 'plugin/external/external.js' },
 				{ src: 'plugin/notes/notes.js', async: true },
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.configure({ tabReplace: '    ' }); hljs.initHighlightingOnLoad(); } }
 			]
 		});
 	</script>

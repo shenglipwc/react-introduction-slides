@@ -45,6 +45,13 @@ module.exports = function(grunt) {
 				src: ['*.sass', '*.scss'],
 				dest: 'css/theme',
 				ext: '.css'
+			},
+			custom: {
+				expand:true,
+				cwd: "css/custom/source",
+				src: ['*.scss', "*.sass"],
+				dest: "css/custom",
+				ext: ".css"
 			}
 		},
 
@@ -132,6 +139,13 @@ module.exports = function(grunt) {
 				],
 				tasks: 'css-themes'
 			},
+			custom: {
+				files: [
+					'css/custom/source/*.sass',
+					'css/custom/source/*.scss'
+				],
+				tasks: 'css-custom'
+			},
 			css: {
 				files: [ 'css/reveal.scss' ],
 				tasks: 'css-core'
@@ -171,6 +185,9 @@ module.exports = function(grunt) {
 
 	// JS task
 	grunt.registerTask( 'js', [ 'jshint', 'uglify', 'qunit' ] );
+
+	// Custom CSS
+	grunt.registerTask( 'css-custom', [ 'sass:custom' ] );
 
 	// Theme CSS
 	grunt.registerTask( 'css-themes', [ 'sass:themes' ] );
