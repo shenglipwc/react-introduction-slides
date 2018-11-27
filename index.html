@@ -13,6 +13,7 @@
 
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
+	<link rel="stylesheet" href="plugin/prism/prism.css">
 
 	<!-- Printing and PDF exports -->
 	<script>
@@ -43,14 +44,14 @@
 				</ul>
 			</section>
 			<section>
-				<p data-height="500px" data-theme-id="0" data-slug-hash="Oazqvx" data-default-tab="js,result" data-user="abucraft"
+				<p data-height="500" data-theme-id="0" data-slug-hash="Oazqvx" data-default-tab="js,result" data-user="abucraft"
 				 data-pen-title="React Component" class="codepen">See the Pen <a href="https://codepen.io/abucraft/pen/Oazqvx/">React
 						Component</a> by 李晟 (<a href="https://codepen.io/abucraft">@abucraft</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-				<script src="https://static.codepen.io/assets/embed/ei.js"></script>
+				<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 			</section>
 			<section>
 				<h3>Class Component</h3>
-				<pre><code class="javascript">class Welcome extends React.Component {
+				<pre><code class="language-jsx">class Welcome extends React.Component {
 	state = {}
 	render() {
 		return &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;;
@@ -63,31 +64,55 @@
 				</ul>
 			</section>
 			<section>
-				<section>
+				<section id="render">
 					<h3>How does react render component?</h3>
 				</section>
 				<section>
 					<h3>What is JSX?</h3>
 					<div class="fragment">
 						<p style="text-align:left">Syntax suger for</p>
-						<pre style="display:inline"><code class="javascript">React.createElement(component, props, ...children)</code></pre>
+						<pre><code class="language-javascript">React.createElement(component, props, ...children)</code></pre>
 						<p class="fragment" style="text-align: left">children &#8594; props.children</p>
 					</div>
 				</section>
 				<section>
 					<div>
-						<pre><code class="html">&lt;MyButton color="blue" shadowSize={2}&gt;
+						<pre><code class="language-jsx">&lt;MyButton color="blue" shadowSize={2}&gt;
 	Click Me
 &lt;/MyButton&gt;</code></pre>
 						<div class="fragment">
 							<img style="height:80px;width:80px" class="icon" src="lib/arrow.svg"></img>
-							<pre><code class="javascript">React.createElement(
+							<pre><code class="language-javascript">React.createElement(
 	MyButton,
 	{color: 'blue', shadowSize: 2},
 	'Click Me'
 )</code></pre>
 						</div>
 					</div>
+				</section>
+				<section id="render-tree-code">
+					<pre style="font-size: 0.4em"><code style="max-height:500px" class="language-jsx">function App(){
+	return (&lt;React.Fragment&gt;
+		&lt;Navigation/&gt;
+		&lt;Contents/&gt;
+	&lt;/React.Fragment&gt;)
+}
+function Navigation(){
+	return (&lt;React.Fragment&gt;
+		&lt;title/&gt;
+		&lt;Search/&gt;
+	&lt;/React.Fragment&gt;)
+}
+function Contents(){
+	return (&lt;p&gt;&lt;/p&gt;)
+}
+function Search(){
+	return (&lt;React.Fragment&gt;
+		&lt;input/&gt;
+		&lt;button/&gt;
+	&lt;/React.Fragment&gt;)
+}
+					</code></pre>
 				</section>
 				<section data-external="react-tree.html"></section>
 			</section>
@@ -101,9 +126,35 @@
 				</section>
 				<section>
 					<p>Event callback</p>
-					<pre class="fragment"><code class="javascript">&lt;button onClick={activateLasers}&gt;
+					<pre><code class="language-jsx">&lt;button onClick={activateLasers}&gt;
 	Activate Lasers
 &lt;/button&gt;</code></pre>
+				</section>
+				<section>
+					<p data-height="400" data-theme-id="0" data-slug-hash="gQvjXL" data-default-tab="js,result" data-user="abucraft"
+					 data-pen-title="React Component2" class="codepen">See the Pen <a href="https://codepen.io/abucraft/pen/gQvjXL/">React
+							Component2</a> by 李晟 (<a href="https://codepen.io/abucraft">@abucraft</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+				</section>
+				<section>
+					<p>We can also pass the callback through props</p>
+				</section>
+				<section>
+					<pre style="font-size: 0.4em;width:auto;"><code style="max-height: 500px" class="language-jsx">class App extends React.Component {
+	state = { loginUser: null }
+	handleLogin = (username) =&gt; {
+		this.setState({ loginUser: username })
+	}
+	render() {
+		return &lt;Navigation onLogin={this.handleLogin} /&gt;
+	}
+}
+class Navigation extends React.Component {
+	onClick = ()=&gt; this.props.handleLogin(&quot;default&quot;)
+	render() {
+		return (&lt;button onClick={this.onClick}&gt;login&lt;/button&gt;)
+	}
+}
+					</code></pre>
 				</section>
 				<section data-external="react-tree.html"></section>
 			</section>
@@ -124,15 +175,20 @@
 					<h3>Use the power of javascript!</h3>
 				</section>
 				<section>
-					<pre><code class="javascript">&lt;div&gt;
+					<pre><code class="language-jsx">&lt;div&gt;
 	{isLoggedIn? (&lt;LogoutButton /&gt;) : (&lt;LoginButton /&gt;)}
 &lt;/div&gt;</code></pre>
 				</section>
 				<section>
-					<pre><code class="javascript">numbers.map((number) =&gt;
-// Key should be specified inside the array.
-&lt;ListItem key={number.toString()}
-		value={number} /&gt;)</code></pre>
+					<pre><code class="language-javascript">function NumberList() {
+	var numbers = [1, 2, 3, 4]
+	return (&lt;ul&gt;{
+		numbers.map((number) =&gt;
+			// Key should be specified inside the array.
+			&lt;li key={number.toString()}
+				value={number} /&gt;)}
+	&lt;/ul&gt;)
+}</code></pre>
 				</section>
 			</section>
 			<section>
@@ -151,12 +207,15 @@
 					</a>
 				</section>
 			</section>
-			<section><h3>Thanks!</h3></section>
+			<section>
+				<h3>Thanks!</h3>
+			</section>
 		</div>
 	</div>
 
 	<script src="lib/js/head.min.js"></script>
 	<script src="js/reveal.js"></script>
+	<script src="plugin/prism/prism.js"></script>
 
 	<script>
 		// More info about config & dependencies:
@@ -173,10 +232,9 @@
 				{ src: 'plugin/markdown/marked.js' },
 				{ src: 'plugin/markdown/markdown.js' },
 				{ src: 'plugin/external/external.js' },
-				{ src: 'plugin/notes/notes.js', async: true },
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.configure({ tabReplace: '    ' }); hljs.initHighlightingOnLoad(); } }
+				{ src: 'plugin/notes/notes.js', async: true }
 			]
-		});
+		}); 
 	</script>
 </body>
 
