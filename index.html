@@ -34,8 +34,62 @@
 				<br>
 				<h2>React</h2>
 			</section>
-			<section data-external="what.html"></section>
 			<section data-external="why.html"></section>
+			<section>
+					<table border="1" style="width: 500px;height:200px;border: 1px solid">
+						<tbody>
+						<tr><th style="text-align:center;vertical-align:middle;">Name</th><th style="text-align:center;vertical-align:middle;">Age</th></tr>
+						<tr><td style="text-align:center;vertical-align:middle;">sheng</td><td style="text-align:center;vertical-align:middle;">23</td></tr>
+						<tr><td style="text-align:center;vertical-align:middle;">Samone</td><td style="text-align:center;vertical-align:middle;">99</td></tr>
+						</tbody>
+					</table>
+				<br>
+				<button style="width: 150px;height: 60px;font-size: 20px">change data</button>
+			</section>
+
+			<section>
+				<table style="width: 500px;height:200px;border: 1px solid">
+					<tbody>
+					<tr><th style="text-align:center;vertical-align:middle;">Name</th><th style="text-align:center;vertical-align:middle;">Age</th></tr>
+					<tr><td style="text-align:center;vertical-align:middle;">sheng</td><td style="text-align:center;vertical-align:middle;">23</td></tr>
+					<tr><td style="text-align:center;vertical-align:middle;"><s style="color: red">Samone</s>Sunny</td><td style="text-align:center;vertical-align:middle;"><s style="color: red">99</s>18</td></tr>
+					</tbody>
+				</table>
+			</section>
+			<section><h5>Raw JS</h5>
+				<pre >
+						<code>
+&lt;table&gt;
+&#x9;&lt;tbody&gt;
+&#x9;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Age&lt;/th&gt;&lt;/tr&gt;
+&#x9;&lt;tr&gt;&lt;td&gt;sheng&lt;/td&gt;&lt;td&gt;23&lt;/td&gt;&lt;/tr&gt;
+&#x9;&lt;tr&gt;&lt;td id="name2"&gt;Samone&lt;/td&gt;&lt;td&gt;99&lt;/td&gt;&lt;/tr&gt;
+&#x9;&lt;/tbody&gt;
+&lt;/table&gt;
+						</code>
+					</pre>
+				<div class="fragment" style="text-align: left;"><span>var td2 = document.getElementById("name2");</span>
+				<br>
+					<span>td2.innerText = "Sunny";</span>
+				</div>
+
+			</section>
+
+			<section>
+				<h7>what is like if using react</h7>
+				<pre ><code style="max-height:600px;max-width: 1400px;font-size: 20px" class="language-jsx">class MyTable extends React.Component {
+	state = {name2:Samone;
+			 age2:99;}
+render() {
+return((&#x3C;table&#x3E;&#x3C;tbody&#x3E;
+         &#x3C;tr&#x3E;&#x3C;th&#x3E;Name&#x3C;/th&#x3E;&#x3C;th&#x3E;Age&#x3C;/th&#x3E;&#x3C;/tr&#x3E;
+         &#x3C;tr&#x3E;&#x3C;td&#x3E;Sheng&#x3C;/td&#x3E;&#x3C;td&#x3E;23&#x3C;/td&#x3E;&#x3C;/tr&#x3E;
+         &#x3C;tr&#x3E;&#x3C;td&#x3E;{this.stage.name2}&#x3C;/td&#x3E;&#x3C;td&#x3E;{this.stage.age2}&#x3C;/td&#x3E;
+         &#x3C;/tr&#x3E;
+        &#x3C;/tbody&#x3E;&#x3C;/table&#x3E;))
+   }
+}</code></pre>
+			</section>
 			<section>
 				<h3>Start from Component</h3>
 				<ul class="fragment">
