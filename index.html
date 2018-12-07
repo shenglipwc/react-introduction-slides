@@ -108,8 +108,11 @@ return((&#x3C;table&#x3E;&#x3C;tbody&#x3E;
 			</section>
 			<section>
 				<h3>Class Component</h3>
-				<pre><code class="language-jsx">class Welcome extends React.Component {
-	state = {}
+				<pre style="font-size: 0.4em"><code class="language-jsx">class Welcome extends React.Component {
+	constructor(props){
+		super(props)
+		this.state = {}
+	}
 	render() {
 		return &lt;h1&gt;Hello, {this.props.name}&lt;/h1&gt;;
 	}
